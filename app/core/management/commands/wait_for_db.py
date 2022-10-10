@@ -17,14 +17,12 @@ class Command(BaseCommand):
         self.stdout.write('waiting for database...')
         db_up = False
         
-        while db_up == False :
+        while  db_up is False:
             try:
-                self.check(databases=['default']) 
+                self.check(databases=['default'])
                 db_up = True
-            except(psycopg2error,OperationalError):
+            except(psycopg2error, OperationalError):
                 self.stdout.write('databse unavailable , waiting 1 second')
                 time.sleep(1)
 
-        self.stdout.write(self.style.SUCCESS('DATBASE AVAILABLE'))            
-
-        
+        self.stdout.write(self.style.SUCCESS('DATBASE AVAILABLE'))
