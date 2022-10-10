@@ -1,7 +1,7 @@
 """
-django command to wait for db 
+django command to wait for db
 """
-import time 
+import time
 from psycopg2 import OperationalError as psycopg2error
 from django.db.utils import OperationalError
 
@@ -12,12 +12,11 @@ class Command(BaseCommand):
 
     """Djando command to wait for database """
 
-    def handle(self,*args,**options):
+    def handle(self, *args, **options):
         """Endpoint for command"""
         self.stdout.write('waiting for database...')
         db_up = False
-        
-        while  db_up is False:
+        while db_up is False:
             try:
                 self.check(databases=['default'])
                 db_up = True
